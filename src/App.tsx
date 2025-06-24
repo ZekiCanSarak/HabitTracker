@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { HabitProvider } from './contexts/HabitContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LocalizationProvider } from './contexts/LocalizationContext';
@@ -15,17 +15,22 @@ const router = {
   }
 };
 
+// Get the base URL from Vite's environment
+const base = import.meta.env.BASE_URL;
+
 function App() {
   return (
     <HabitProvider>
       <ThemeProvider>
         <LocalizationProvider>
           <NotificationProvider>
-            <Router {...router}>
+            <Router basename={base} {...router}>
               <Layout>
                 <Routes>
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/progress" element={<Progress />} />
+                  {/* Redirect any unknown routes to Dashboard */}
+                  <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
               </Layout>
             </Router>
