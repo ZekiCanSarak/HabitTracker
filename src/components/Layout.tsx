@@ -1,7 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
 import {
-  SunIcon,
-  MoonIcon,
   UserCircleIcon,
   Cog6ToothIcon,
   BellIcon,
