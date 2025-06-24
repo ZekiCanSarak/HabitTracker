@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/HabitTracker/',
+  base: process.env.NODE_ENV === 'production' ? '/HabitTracker/' : '/',
   plugins: [
     react(),
     VitePWA({
@@ -57,7 +57,7 @@ export default defineConfig({
             type: 'image/png'
           }
         ],
-        start_url: '/HabitTracker/',
+        start_url: process.env.NODE_ENV === 'production' ? '/HabitTracker/' : '/',
         display: 'standalone',
         background_color: '#ffffff'
       },
