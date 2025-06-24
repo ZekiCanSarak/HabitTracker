@@ -3,8 +3,34 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-primary: #3b82f6;
+    --color-secondary: #60a5fa;
+    --color-background: #f3f4f6;
+    --color-cardBackground: #ffffff;
+    --color-text: #1f2937;
+    --color-accent: #f59e0b;
+  }
+
   body {
-    @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
+
+  input, textarea, select {
+    background-color: var(--color-cardBackground);
+    color: var(--color-text);
+    border: 1px solid var(--color-secondary);
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: var(--color-text);
+    opacity: 0.5;
+  }
+
+  .color-picker-ring {
+    @apply ring-2 ring-offset-2;
+    --tw-ring-color: var(--color-primary);
   }
 }
 
@@ -14,14 +40,97 @@
   }
   
   .btn-primary {
-    @apply bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600;
+    background-color: var(--color-primary);
+    color: white;
+    &:hover {
+      filter: brightness(90%);
+    }
   }
 
   .btn-secondary {
-    @apply bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600;
+    background-color: var(--color-secondary);
+    color: white;
+    &:hover {
+      filter: brightness(90%);
+    }
   }
 
   .card {
-    @apply bg-white p-6 rounded-xl shadow-md dark:bg-gray-800;
+    background-color: var(--color-cardBackground);
+    color: var(--color-text);
+    @apply p-6 rounded-xl shadow-md;
   }
+
+  .habit-row {
+    background-color: var(--color-cardBackground);
+    border: 1px solid var(--color-secondary);
+    @apply rounded-lg p-4 mb-2;
+  }
+
+  .habit-cell {
+    background-color: var(--color-cardBackground);
+    border: 1px solid var(--color-secondary);
+    @apply rounded-lg p-2;
+  }
+}
+
+/* React Select Dark Mode Styles */
+.react-select-container .react-select__control {
+  background-color: var(--color-cardBackground) !important;
+  border-color: var(--color-secondary) !important;
+}
+
+.react-select-container .react-select__menu {
+  background-color: var(--color-cardBackground) !important;
+}
+
+.react-select-container .react-select__option {
+  background-color: var(--color-cardBackground) !important;
+  color: var(--color-text) !important;
+}
+
+.react-select-container .react-select__option--is-focused {
+  background-color: var(--color-primary) !important;
+  color: white !important;
+}
+
+.react-select-container .react-select__option--is-selected {
+  background-color: var(--color-secondary) !important;
+  color: white !important;
+}
+
+.react-select-container .react-select__single-value {
+  color: var(--color-text) !important;
+}
+
+.react-select-container .react-select__multi-value {
+  background-color: var(--color-secondary) !important;
+  color: white !important;
+}
+
+.react-select-container .react-select__multi-value__label {
+  color: white !important;
+}
+
+.react-select-container .react-select__input-container {
+  color: var(--color-text) !important;
+}
+
+.react-select-container .react-select__placeholder {
+  color: var(--color-text) !important;
+  opacity: 0.6;
+}
+
+.react-select-container .react-select__indicators {
+  color: var(--color-text) !important;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: var(--color-cardBackground);
+  color: var(--color-text);
 } 

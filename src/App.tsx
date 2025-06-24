@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HabitProvider } from './contexts/HabitContext';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { LocalizationProvider } from './contexts/LocalizationContext';
+import { NotificationProvider } from './contexts/NotificationContext';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import Progress from './pages/Progress';
@@ -15,18 +17,22 @@ const router = {
 
 function App() {
   return (
-    <ThemeProvider>
-      <HabitProvider>
-        <Router {...router}>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/progress" element={<Progress />} />
-            </Routes>
-          </Layout>
-        </Router>
-      </HabitProvider>
-    </ThemeProvider>
+    <HabitProvider>
+      <ThemeProvider>
+        <LocalizationProvider>
+          <NotificationProvider>
+            <Router {...router}>
+              <Layout>
+                <Routes>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/progress" element={<Progress />} />
+                </Routes>
+              </Layout>
+            </Router>
+          </NotificationProvider>
+        </LocalizationProvider>
+      </ThemeProvider>
+    </HabitProvider>
   );
 }
 
